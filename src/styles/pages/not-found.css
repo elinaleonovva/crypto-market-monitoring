@@ -1,0 +1,15 @@
+@import '../variables.css';
+
+.not-found {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.home-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+}

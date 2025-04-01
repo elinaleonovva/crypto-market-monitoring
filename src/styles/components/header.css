@@ -1,0 +1,22 @@
+@import '../variables.css';
+
+.header {
+    background-color: var(--bg-dark);
+    color: white;
+}
+
+.nav-links a {
+    color: white;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.theme-toggle-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+}

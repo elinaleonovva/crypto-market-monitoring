@@ -1,0 +1,10 @@
+@import '../variables.css';
+
+.converter-container {
+    background-color: var(--card-bg);
+}
+
+.conversion-result {
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+}

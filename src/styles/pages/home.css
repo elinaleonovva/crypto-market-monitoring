@@ -1,0 +1,18 @@
+@import '../variables.css';
+
+.home-page {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.home-page h1 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.market-overview {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+}

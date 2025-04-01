@@ -1,0 +1,10 @@
+@import '../variables.css';
+
+.news-card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.news-card a {
+    color: var(--primary-color);
+}

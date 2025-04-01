@@ -1,0 +1,11 @@
+@import '../variables.css';
+
+.crypto-card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.crypto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}

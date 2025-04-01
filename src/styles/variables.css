@@ -1,0 +1,25 @@
+:root {
+    /* Светлая тема (по умолчанию) */
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --text-color: #333;
+    --text-light: #777;
+    --bg-light: #f8f9fa;
+    --bg-dark: #2c3e50;
+    --border-color: #ddd;
+    --card-bg: #ffffff;
+}
+
+[data-theme="dark"] {
+    /* Темная тема */
+    --primary-color: #4a90e2;
+    --secondary-color: #27ae60;
+    --text-color: #ecf0f1;
+    --text-light: #bdc3c7;
+    --bg-light: #34495e;
+    --bg-dark: #2c3e50;
+    --border-color: #2c3e50;
+    --card-bg: #2c3e50;
+}

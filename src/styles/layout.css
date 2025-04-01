@@ -1,0 +1,64 @@
+@import './variables.css';
+
+/* Анимации для перехода между темами */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Дополнительные стили для темной темы */
+[data-theme="dark"] {
+    /* Специфичные стили для элементов в темной теме */
+    .footer {
+        background-color: var(--bg-dark);
+        border-top: 1px solid var(--border-color);
+    }
+
+    .loader {
+        border-color: var(--bg-dark);
+        border-top-color: var(--primary-color);
+    }
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Header */
+.header {
+    height: var(--header-height);
+    background-color: var(--bg-dark);
+    color: white;
+    padding: 0 20px;
+}
+
+.header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+/* Footer */
+.footer {
+    height: var(--footer-height);
+    background-color: var(--bg-dark);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
