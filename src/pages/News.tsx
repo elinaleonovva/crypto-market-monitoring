@@ -8,7 +8,7 @@ const News = () => {
         <div className="news-page">
             <h1>Последние новости</h1>
             <NewsFeed
-                news={news}
+                news={news.slice(0, 10)}
                 loading={loading}
                 error={error}
             />

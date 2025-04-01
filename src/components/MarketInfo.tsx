@@ -1,15 +1,15 @@
+// components/MarketInfo.tsx
 import { useEffect, useState } from 'react';
 import Loader from './Loader';
 import ErrorMessage from './ErrorMessage';
 import { fetchMarketData } from '../services/marketService';
-import '../styles';
+import '../styles/components/market-info.css';
 
 interface CryptoData {
     id: string;
     name: string;
     symbol: string;
     current_price: number;
-    price_change_percentage_24h: number;
 }
 
 const MarketInfo = () => {
@@ -21,7 +21,7 @@ const MarketInfo = () => {
         const loadData = async () => {
             try {
                 const data = await fetchMarketData();
-                setCryptoData(data);
+                setCryptoData(data.slice(0, 20));
             } catch (err) {
                 setError('Ошибка загрузки данных о рынке');
             } finally {
@@ -35,17 +35,21 @@ const MarketInfo = () => {
     if (error) return <ErrorMessage message={error} />;
 
     return (
-        <div className="market-grid">
-            {cryptoData.map((crypto) => (
-                <div key={crypto.id} className="crypto-card">
-                    <h3>{crypto.name} ({crypto.symbol.toUpperCase()})</h3>
-                    <p>${crypto.current_price.toLocaleString()}</p>
-                    <p className={crypto.price_change_percentage_24h >= 0 ? 'positive' : 'negative'}>
-                        {crypto.price_change_percentage_24h.toFixed(2)}%
-                    </p>
-                </div>
-            ))}
-        </div>
+        <section className="market-section">
+            <div className="market-grid">
+                {cryptoData.map((crypto) => (
+                    <div key={crypto.id} className="crypto-card">
+                        <div className="crypto-header">
+                            <span className="crypto-symbol">{crypto.symbol.toUpperCase()}</span>
+                            <span className="crypto-name">{crypto.name}</span>
+                        </div>
+                        <div className="crypto-price">
+                            ${crypto.current_price.toLocaleString()}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
     );
 };
 

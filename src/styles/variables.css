@@ -1,25 +1,65 @@
 :root {
     /* Светлая тема (по умолчанию) */
-    --primary-color: #3498db;
     --secondary-color: #2ecc71;
     --error-color: #dc3545;
     --success-color: #28a745;
     --text-color: #333;
-    --text-light: #777;
     --bg-light: #f8f9fa;
     --bg-dark: #2c3e50;
     --border-color: #ddd;
     --card-bg: #ffffff;
+
+    --card-bg-alpha: rgba(255, 255, 255, 0.1);
+    --card-bg-dark-alpha: rgba(0, 0, 0, 0.1);
+    --title-font: 'Ubuntu', sans-serif;
+    --text-font: 'Roboto', sans-serif;
+    --card-radius: 12px;
+    --card-padding: 1.5rem;
+
+    --primary-color: #3498db;
+    --text-dark: #2c3e50;
+    --text-light: #ecf0f1;
+
+    --background: #f8f9fa;
+    --hero-bg: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+    url('https://f.donkhunter.com/News/d/1/f/d1fd893497cec0d0d82d85e282f389fe-06380-fill-750-350.jpg') center/cover;
+    --blockchain-bg: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
+    url('https://www.inbusiness.kz/uploads/31/images/yzilrcvk.jpg') center/cover;
+    --hero-text: #ffffff;
+    --hero-text-secondary: rgba(255,255,255,0.9);
+    --section-title: #ffffff;
+    --card-bg: rgba(255,255,255,0.95);
+    --card-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    --text-primary: #2c3e50;
+    --term-color: #2c3e50;
+    --list-item-bg: #ffffff;
+    --list-item-hover: #f1f3f5;
 }
 
 [data-theme="dark"] {
     /* Темная тема */
-    --primary-color: #4a90e2;
+    --primary-color: #f8f9fa;
     --secondary-color: #27ae60;
     --text-color: #ecf0f1;
     --text-light: #bdc3c7;
-    --bg-light: #34495e;
+    --bg-light: #4b637d;
     --bg-dark: #2c3e50;
     --border-color: #2c3e50;
     --card-bg: #2c3e50;
+    --background-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+
+    --background: #1a1a1a;
+    --hero-bg: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
+    url('https://f.donkhunter.com/News/d/1/f/d1fd893497cec0d0d82d85e282f389fe-06380-fill-750-350.jpg') center/cover;
+    --blockchain-bg: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.95)),
+    url('https://www.inbusiness.kz/uploads/31/images/yzilrcvk.jpg') center/cover;
+    --hero-text: #ffffff;
+    --hero-text-secondary: rgba(255,255,255,0.85);
+    --section-title: #ffffff;
+    --card-bg: rgba(30,30,30,0.95);
+    --card-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    --text-primary: #e1e1e1;
+    --term-color: #4a90e2;
+    --list-item-bg: #2d2d2d;
+    --list-item-hover: #3a3a3a;
 }

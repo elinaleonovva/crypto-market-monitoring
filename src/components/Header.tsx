@@ -1,23 +1,34 @@
 import { Link } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
-import '../styles';
 
-export const Header = () => {
+const Header = () => {
     const { theme, toggleTheme } = useTheme();
 
     return (
         <header className={`header ${theme}`}>
-            <nav>
-                <Link to="/" className="logo">CryptoMonitor</Link>
-                <div className="nav-links">
-                    <Link to="/market">Рынок</Link>
-                    <Link to="/news">Новости</Link>
-                    <Link to="/exchanges">Биржи</Link>
-                    <Link to="/converter">Конвертер</Link>
+            <nav className="header-nav">
+                {/* Левая часть - Иконка темы */}
+                <div className="header-side left">
+                    <button
+                        onClick={toggleTheme}
+                        className="theme-toggle"
+                        aria-label="Сменить тему"
+                    >
+                        {theme === 'light' ? '🌙' : '☀️'}
+                    </button>
                 </div>
-                <button onClick={toggleTheme}>
-                    {theme === 'light' ? '🌙' : '☀️'}
-                </button>
+
+                {/* Центральная часть - Навигация */}
+                <div className="nav-center">
+                    <Link to="/" className="nav-link">Главная</Link>
+                    <Link to="/market" className="nav-link">Рынок</Link>
+                    <Link to="/news" className="nav-link">Новости</Link>
+                    <Link to="/exchanges" className="nav-link">Биржи</Link>
+                    <Link to="/converter" className="nav-link">Конвертер</Link>
+                </div>
+
+                {/* Правая часть - Для баланса */}
+                <div className="header-side right"></div>
             </nav>
         </header>
     );

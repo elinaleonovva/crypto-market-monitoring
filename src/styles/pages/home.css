@@ -1,18 +1,242 @@
-@import '../variables.css';
-
 .home-page {
+    background: var(--background);
+    min-height: 100vh;
+}
+
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* Герой-секция */
+.hero-section {
+    position: relative;
+    padding: 4rem 0;
+    background: var(--hero-bg);
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    background-blend-mode: multiply;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Секция о блокчейне */
+.blockchain-section {
+    background: var(--blockchain-bg);
+    padding: 2rem 1rem;
+    border-radius: 15px;
+    position: relative;
+    background-blend-mode: darken;
+    background-position: center;
+    background-size: cover;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.main-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.8rem;
+    color: var(--hero-text);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
+    padding: 0 1rem;
+}
+
+.main-description {
+    font-size: 1rem;
+    color: var(--hero-text-secondary);
+    line-height: 1.5;
+    padding: 0 1rem;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.6rem;
+    color: var(--section-title);
     text-align: center;
-    padding: 40px 20px;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
 }
 
-.home-page h1 {
-    margin-bottom: 20px;
-    color: var(--primary-color);
+.text-block {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    margin: 0 1rem;
 }
 
-.market-overview {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: var(--bg-light);
-    border-radius: var(--border-radius);
+.highlight-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.term {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--term-color);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.aspects-list {
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+.aspects-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 1.2rem;
+}
+
+.aspects-list ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.8rem;
+}
+
+.aspects-list li {
+    background: var(--list-item-bg);
+    padding: 1rem;
+    border-radius: 6px;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.aspects-list li:hover {
+    transform: translateX(3px);
+    background: var(--list-item-hover);
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 768px) {
+    .home-container {
+        padding: 0.5rem;
+    }
+
+    .hero-section {
+        padding: 3rem 0;
+        border-radius: 12px;
+    }
+
+    .main-title {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .text-block {
+        padding: 1.2rem;
+        margin: 0 0.5rem;
+    }
+
+    .highlight-text {
+        font-size: 1rem;
+    }
+
+    .term {
+        font-size: 1rem;
+    }
+
+    .aspects-title {
+        font-size: 1.2rem;
+    }
+
+    .aspects-list li {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 2rem 0;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+    }
+
+    .blockchain-section {
+        padding: 1.5rem 0.5rem;
+        border-radius: 10px;
+    }
+
+    .main-title {
+        font-size: 1.4rem;
+        line-height: 1.3;
+        padding: 0 0.5rem;
+    }
+
+    .main-description {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
+        padding: 0 0.5rem;
+    }
+
+    .content-wrapper {
+        padding: 0.5rem;
+    }
+
+    .text-block {
+        padding: 1rem;
+        margin: 0 0.3rem;
+        border-radius: 8px;
+    }
+
+    .aspects-list li {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+    }
+
+    .aspects-title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .term {
+        font-size: 0.95rem;
+    }
+}
+
+/* Адаптация для очень маленьких экранов */
+@media (max-width: 360px) {
+    .main-title {
+        font-size: 1.3rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .aspects-list li {
+        font-size: 0.8rem;
+        padding: 0.6rem;
+    }
 }
