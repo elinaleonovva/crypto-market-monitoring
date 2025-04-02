@@ -34,6 +34,14 @@
     --term-color: #2c3e50;
     --list-item-bg: #ffffff;
     --list-item-hover: #f1f3f5;
+
+    --bg-hover: rgba(0, 0, 0, 0.03);
+
+    --primary-light: #63b3ed;
+    --text-color-dark: #1a365d;
+
+    /* Размеры */
+    --border-radius: 16px;
 }
 
 [data-theme="dark"] {
@@ -62,4 +70,7 @@
     --term-color: #4a90e2;
     --list-item-bg: #2d2d2d;
     --list-item-hover: #3a3a3a;
+
+    --text-color-dark: #ebf8ff;
+    --bg-dark-hover: rgba(255, 255, 255, 0.05);
 }

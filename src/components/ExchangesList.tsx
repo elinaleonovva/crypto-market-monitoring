@@ -48,38 +48,38 @@ const ExchangesList = ({ sortBy }: ExchangesListProps) => {
     if (error) return <ErrorMessage message={error} />;
 
     return (
-        <table className="exchanges-table">
-            <thead>
-            <tr>
-                <th>Рейтинг</th>
-                <th>Название</th>
-                <th>Объем торгов (24h BTC)</th>
-            </tr>
-            </thead>
-            <tbody>
-            {sortedExchanges.map((exchange) => (
-                <tr key={exchange.id}>
-                    <td>{exchange.trust_score_rank}</td>
-                    <td>
-                        <a
-                            href={exchange.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="exchange-link"
-                        >
+        <div className="exchanges-container">
+            <div className="table-header">
+                <div className="header-cell">Рейтинг</div>
+                <div className="header-cell">Название</div>
+                <div className="header-cell">Объем торгов (24h BTC)</div>
+            </div>
+
+            <div className="exchanges-list">
+                {sortedExchanges.map((exchange) => (
+                    <a
+                        key={exchange.id}
+                        href={exchange.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="exchange-item"
+                    >
+                        <div className="exchange-rank">{exchange.trust_score_rank}</div>
+                        <div className="exchange-info">
                             <img
                                 src={exchange.image}
                                 alt={exchange.name}
                                 className="exchange-logo"
                             />
-                            {exchange.name}
-                        </a>
-                    </td>
-                    <td>{exchange.trade_volume_24h_btc.toFixed(2)}</td>
-                </tr>
-            ))}
-            </tbody>
-        </table>
+                            <span className="exchange-name">{exchange.name}</span>
+                        </div>
+                        <div className="exchange-volume">
+                            {exchange.trade_volume_24h_btc.toFixed(2)}
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </div>
     );
 };
 

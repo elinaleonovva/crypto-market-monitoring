@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import ExchangesList from '../components/ExchangesList';
-import Loader from '../components/Loader';
-import ErrorMessage from '../components/ErrorMessage';
 
 const Exchanges = () => {
     const [sortBy, setSortBy] = useState<'volume' | 'rating'>('volume');
@@ -9,6 +7,7 @@ const Exchanges = () => {
     return (
         <div className="exchanges-page">
             <h1>Криптобиржи</h1>
+            <h2 className="subtitle">Топ бирж</h2>
             <div className="filters">
                 <button
                     onClick={() => setSortBy('volume')}
