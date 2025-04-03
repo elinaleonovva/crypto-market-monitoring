@@ -1,15 +1,8 @@
-// components/Loader.tsx
-import * as React from 'react';
 import '../styles';
-
-interface LoaderProps {
-    small?: boolean;
-}
-
-const Loader: React.FC<LoaderProps> = ({ small = false }) => {
+const Loader = () => {
     return (
-        <div className={`loader ${small ? 'loader-small' : ''}`}>
-            <div className="loader-spinner" />
+        <div className="loader-container">
+            <div className="loader"></div>
         </div>
     );
 };
