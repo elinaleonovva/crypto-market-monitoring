@@ -42,6 +42,19 @@
 
     /* Размеры */
     --border-radius: 16px;
+
+    --primary-dark: #1d4ed8;
+    --error-bg: #fee2e2;
+
+    --text-secondary: #4b5563;
+
+    --bg-darker: #111827;
+    --card-bg: #ffffff;
+    --card-bg-dark: #374151;
+
+    --border-dark: #4b5563;
+
+    --error-light: #fca5a5;
 }
 
 [data-theme="dark"] {

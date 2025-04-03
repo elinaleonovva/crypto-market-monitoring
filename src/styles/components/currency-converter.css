@@ -1,10 +1,142 @@
-@import '../variables.css';
-
 .converter-container {
-    background-color: var(--card-bg);
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.amount-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.amount-input::placeholder {
+    color: #94a3b8;
+}
+
+.amount-input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.amount-input.invalid {
+    border-color: #dc2626;
+    background-color: #fef2f2;
+}
+
+.validation-error {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.currency-selectors {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.selector-group {
+    flex: 1;
+}
+
+.currency-select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background: white;
+    appearance: none;
+    font-size: 1rem;
+}
+
+.switch-button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.switch-button:hover {
+    background: #1d4ed8;
 }
 
 .conversion-result {
-    background-color: var(--bg-dark);
-    color: var(--text-color);
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #1e293b;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Темная тема */
+[data-theme="dark"] .converter-container {
+    background: #1a1a1a;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .amount-input,
+[data-theme="dark"] .currency-select {
+    background: #2d2d2d;
+    border-color: #404040;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .amount-input::placeholder {
+    color: #888;
+}
+
+[data-theme="dark"] .switch-button {
+    background: #3b82f6;
+}
+
+[data-theme="dark"] .conversion-result {
+    background: #2d2d2d;
+    color: #ffffff;
+    animation: fadeIn 0.3s ease-out;
+}
+
+[data-theme="dark"] .validation-error {
+    color: #ff6b6b;
+}
+
+[data-theme="dark"] .input-group label {
+    color: #ffffff;
+}
+
+/* Анимация при изменении результата */
+.conversion-result {
+    transition: all 0.3s ease;
+    animation: fadeIn 0.3s ease-out;
 }

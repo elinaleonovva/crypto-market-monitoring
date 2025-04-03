@@ -1,11 +1,15 @@
 @import '../variables.css';
 
+/* Основной контейнер */
 .loader-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 50px;
+    min-height: 200px;
 }
 
+/* Базовый лоадер */
 .loader {
     border: 4px solid var(--bg-light);
     border-top: 4px solid var(--primary-color);
@@ -13,9 +17,74 @@
     width: 40px;
     height: 40px;
     animation: spin 1s linear infinite;
+    position: relative;
 }
 
+/* Варианты размеров */
+.loader-small {
+    width: 20px;
+    height: 20px;
+    border-width: 3px;
+}
+
+.loader-large {
+    width: 60px;
+    height: 60px;
+    border-width: 5px;
+}
+
+/* Цветовые варианты */
+.loader-error {
+    border-top-color: var(--error-color);
+}
+
+.loader-success {
+    border-top-color: var(--success-color);
+}
+
+/* Анимация */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Темная тема */
+[data-theme="dark"] {
+    .loader {
+        border-color: var(--bg-dark);
+        border-top-color: var(--primary-light);
+    }
+
+    .loader-error {
+        border-top-color: var(--error-light);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .loader-container {
+        padding: 30px;
+        min-height: 150px;
+    }
+
+    .loader-large {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .loader-container {
+        padding: 20px;
+    }
+
+    .loader {
+        width: 30px;
+        height: 30px;
+    }
+
+    .loader-small {
+        width: 15px;
+        height: 15px;
+    }
 }
