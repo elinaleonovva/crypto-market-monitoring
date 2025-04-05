@@ -19,6 +19,12 @@ const NewsFeed = ({ news, loading, error }: NewsFeedProps) => {
         }
     };
 
+    // Функция для обработки ошибок загрузки изображений
+    const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+        const target = e.target as HTMLImageElement;
+        target.style.display = 'none'; // Скрыть битое изображение
+    };
+
     if (loading) return <Loader />;
     if (error) return <ErrorMessage message={error} />;
 
@@ -31,21 +37,23 @@ const NewsFeed = ({ news, loading, error }: NewsFeedProps) => {
                         className="news-card"
                         onClick={() => setSelectedNews(item)}
                     >
-                        <img
-                            src={item.imageurl}
-                            alt={item.title}
-                            className="news-image"
-                        />
+                        <div className="image-wrapper">
+                            <img
+                                src={item.imageurl || '/placeholder.jpg'} // Добавлен fallback
+                                alt={item.title}
+                                className="news-image"
+                                loading="lazy" // Ленивая загрузка
+                                decoding="async" // Улучшение производительности рендеринга
+                                onError={handleImageError}
+                            />
+                        </div>
                         <h3 className="news-title">{item.title}</h3>
                     </article>
                 ))}
             </div>
 
             {selectedNews && (
-                <div
-                    className="popup-overlay"
-                    onClick={handleClosePopup}
-                >
+                <div className="popup-overlay" onClick={handleClosePopup}>
                     <div className="popup-content">
                         <button
                             className="close-btn"
@@ -55,7 +63,7 @@ const NewsFeed = ({ news, loading, error }: NewsFeedProps) => {
                         </button>
                         <div className="image-container">
                             <img
-                                src={selectedNews.imageurl}
+                                src={selectedNews.imageurl?.replace('_small', '_large') || '/placeholder-large.jpg'} // Пример увеличения разрешения
                                 alt={selectedNews.title}
                                 className="popup-image"
                             />

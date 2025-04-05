@@ -4,7 +4,7 @@ import Loader from '../components/Loader';
 import ErrorMessage from '../components/ErrorMessage';
 
 const Market = () => {
-    const { cryptocurrencies, loading, error } = useCrypto();
+    const {loading, error } = useCrypto();
 
     return (
         <div className="market-page">
