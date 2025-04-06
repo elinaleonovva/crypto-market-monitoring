@@ -70,6 +70,7 @@ const ExchangesList = ({ sortBy }: ExchangesListProps) => {
                                 src={exchange.image}
                                 alt={exchange.name}
                                 className="exchange-logo"
+                                loading="lazy" // Ленивая загрузка
                             />
                             <span className="exchange-name">{exchange.name}</span>
                         </div>

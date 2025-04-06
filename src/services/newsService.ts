@@ -6,7 +6,7 @@ export interface NewsItem {
     url: string;
     imageurl: string;
     body: string;
-    published_on: number;
+    published_on?: number;
 }
 
 export interface NewsApiResponse {
