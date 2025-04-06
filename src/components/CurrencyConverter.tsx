@@ -12,6 +12,7 @@ interface CurrencyConverterProps {
     onSwitchCurrencies: () => void;
 }
 
+// 1. Мемоизация только списка валют и форматирования
 const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
                                                                  amount,
                                                                  from,
@@ -25,7 +26,8 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
                                                              }) => {
     const [isValid, setIsValid] = React.useState(true);
 
-    const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // 2. Мемоизация обработчика ввода
+    const handleAmountChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         const isValidInput = /^(\d+)?([.]?\d{0,8})?$/.test(value);
         const hasMultipleDots = (value.match(/\./g) || []).length > 1;
@@ -36,17 +38,25 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
         } else {
             setIsValid(false);
         }
-    };
+    }, [onAmountChange]);
 
-    const formatDisplayValue = (value: string) => {
-        if (value === '' || value === '.') return value;
-        if (value.endsWith('.')) return value;
+    // 3. Мемоизация форматированного значения
+    const formattedAmount = React.useMemo(() => {
+        if (amount === '' || amount === '.') return amount;
+        if (amount.endsWith('.')) return amount;
 
-        const numberValue = parseFloat(value);
+        const numberValue = parseFloat(amount);
         return Number.isInteger(numberValue)
             ? numberValue.toString()
             : numberValue.toFixed(6).replace(/0+$/, '').replace(/\.$/, '');
-    };
+    }, [amount]);
+
+    // 4. Мемоизация элементов списка валют
+    const CurrencyOption = React.memo(({ currency }: { currency: typeof currencies[0] }) => (
+        <option value={currency.id}>
+            {currency.name} ({currency.symbol})
+        </option>
+    ));
 
     return (
         <div className="converter-container">
@@ -55,7 +65,7 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
                     <label>Сумма:</label>
                     <input
                         type="text"
-                        value={formatDisplayValue(amount)}
+                        value={formattedAmount}
                         onChange={handleAmountChange}
                         placeholder="Введите сумму"
                         className={`amount-input ${!isValid ? 'invalid' : ''}`}
@@ -76,12 +86,7 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
                             className="currency-select"
                         >
                             {currencies.map(currency => (
-                                <option
-                                    key={currency.id}
-                                    value={currency.id}
-                                >
-                                    {currency.name} ({currency.symbol})
-                                </option>
+                                <CurrencyOption key={currency.id} currency={currency} />
                             ))}
                         </select>
                     </div>
@@ -102,12 +107,7 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
                             className="currency-select"
                         >
                             {currencies.map(currency => (
-                                <option
-                                    key={currency.id}
-                                    value={currency.id}
-                                >
-                                    {currency.name} ({currency.symbol})
-                                </option>
+                                <CurrencyOption key={currency.id} currency={currency} />
                             ))}
                         </select>
                     </div>
@@ -127,4 +127,4 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
     );
 };
 
-export default CurrencyConverter;
+export default React.memo(CurrencyConverter); // 5. Мемоизация всего компонента (опционально)
