@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchNews } from '../services/newsService';
-import { NewsItem, NewsApiResponse } from '../services/newsService';
+import { NewsItem } from '../services/newsService';
 
 interface NewsState {
     items: NewsItem[];
