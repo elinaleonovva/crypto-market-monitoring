@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/crypto-market-monitoring/static/css/main.6f45c264.css",
+    "main.js": "/crypto-market-monitoring/static/js/main.91ed5c46.js",
+    "index.html": "/crypto-market-monitoring/index.html",
+    "main.6f45c264.css.map": "/crypto-market-monitoring/static/css/main.6f45c264.css.map",
+    "main.91ed5c46.js.map": "/crypto-market-monitoring/static/js/main.91ed5c46.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f45c264.css",
+    "static/js/main.91ed5c46.js"
+  ]
+}
