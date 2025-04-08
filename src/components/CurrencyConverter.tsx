@@ -12,7 +12,7 @@ interface CurrencyConverterProps {
     onSwitchCurrencies: () => void;
 }
 
-// 1. Мемоизация только списка валют и форматирования
+// Мемоизация списка валют и форматирования
 const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
                                                                  amount,
                                                                  from,
@@ -26,7 +26,7 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
                                                              }) => {
     const [isValid, setIsValid] = React.useState(true);
 
-    // 2. Мемоизация обработчика ввода
+    // Мемоизация обработчика ввода
     const handleAmountChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         const isValidInput = /^(\d+)?([.]?\d{0,8})?$/.test(value);
@@ -40,7 +40,7 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
         }
     }, [onAmountChange]);
 
-    // 3. Мемоизация форматированного значения
+    // Мемоизация форматированного значения
     const formattedAmount = React.useMemo(() => {
         if (amount === '' || amount === '.') return amount;
         if (amount.endsWith('.')) return amount;
@@ -51,7 +51,7 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
             : numberValue.toFixed(6).replace(/0+$/, '').replace(/\.$/, '');
     }, [amount]);
 
-    // 4. Мемоизация элементов списка валют
+    // Мемоизация элементов списка валют
     const CurrencyOption = React.memo(({ currency }: { currency: typeof currencies[0] }) => (
         <option value={currency.id}>
             {currency.name} ({currency.symbol})
@@ -127,4 +127,4 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
     );
 };
 
-export default React.memo(CurrencyConverter); // 5. Мемоизация всего компонента (опционально)
+export default React.memo(CurrencyConverter); // Мемоизация всего компонента

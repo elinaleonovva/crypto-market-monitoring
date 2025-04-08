@@ -17,7 +17,6 @@ interface ExchangeApiResponse {
     trade_volume_24h_btc: number;
     url: string;
     image: string;
-    // Другие поля, если они есть в ответе, но не используются
 }
 
 export const fetchExchanges = async (): Promise<Exchange[]> => {

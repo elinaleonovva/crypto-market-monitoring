@@ -11,7 +11,6 @@ export interface NewsItem {
 
 export interface NewsApiResponse {
     Data: NewsItem[];
-    // Другие поля ответа, если есть
 }
 
 export const fetchNews = async (): Promise<NewsApiResponse> => {

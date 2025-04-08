@@ -1,5 +1,5 @@
 // Юнит-тестирование (Jest)
-import { renderHook, act } from '@testing-library/react'; // Импорт из основной библиотеки
+import { renderHook, act } from '@testing-library/react';
 import { useCurrencyConverter } from '../useCurrencyConverter';
 
 describe('useCurrencyConverter', () => {

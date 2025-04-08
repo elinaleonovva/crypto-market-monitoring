@@ -1,5 +1,5 @@
 // Юнит-тестирование (Jest)
-import { renderHook, act } from '@testing-library/react'; // Добавлен act
+import { renderHook, act } from '@testing-library/react';
 import { useTheme } from '../useTheme';
 
 test('Переключение темы обновляет localStorage и DOM', () => {

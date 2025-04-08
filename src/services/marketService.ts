@@ -28,7 +28,7 @@ interface CoinGeckoMarketData {
 
 export const fetchMarketData = async (): Promise<CryptoCurrency[]> => {
     try {
-        // Явно указываем тип ответа от API
+        // Явно указан тип ответа от API
         const response = await apiClient.get<CoinGeckoMarketData[]>('/coins/markets', {
             params: {
                 vs_currency: 'usd',
@@ -39,7 +39,7 @@ export const fetchMarketData = async (): Promise<CryptoCurrency[]> => {
             },
         });
 
-        // Теперь TypeScript знает структуру response.data
+        // TypeScript знает структуру response.data
         return response.data.map((coin: CoinGeckoMarketData) => ({
             id: coin.id,
             name: coin.name,
@@ -50,7 +50,7 @@ export const fetchMarketData = async (): Promise<CryptoCurrency[]> => {
             market_cap: coin.market_cap,
         }));
     } catch (error) {
-        // Улучшенная обработка ошибок с сохранением оригинального сообщения
+        // Обработка ошибок с сохранением оригинального сообщения
         throw new Error(`Failed to fetch market data: ${
             error instanceof Error ? error.message : 'Unknown error'
         }`);

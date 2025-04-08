@@ -1,5 +1,4 @@
-// CurrencyConverter.unit.test.ts
-// ЮНИТ-ТЕСТЫ — проверка изолированной логики
+// ЮНИТ-ТЕСТ — проверка изолированной логики
 
 describe('CurrencyConverter - formattedAmount logic', () => {
     const formatAmount = (amount: string): string => {

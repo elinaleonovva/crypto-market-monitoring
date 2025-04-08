@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 import { useEffect } from 'react';
 import '../styles/pages/home.css';
 
