@@ -17,7 +17,12 @@ export interface NewsApiResponse {
 export const fetchNews = async (): Promise<NewsApiResponse> => {
     try {
         const response = await axios.get<NewsApiResponse>(
-            'https://min-api.cryptocompare.com/data/v2/news/?lang=EN'
+            'https://min-api.cryptocompare.com/data/v2/news/?lang=EN',
+            {
+                headers: {
+                    "Authorization": `Apikey ${process.env.c87a6c190fd31d303b98d5c663427a266b087552e0330957d70cb755c41e4114}`
+                }
+            }
         );
         return response.data;
     } catch (error) {
