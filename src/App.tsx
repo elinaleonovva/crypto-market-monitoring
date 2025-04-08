@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'; // Изменено здесь
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import { CryptoProvider } from './context/CryptoContext';
@@ -20,7 +20,7 @@ const App = () => {
             <AuthProvider>
                 <CryptoProvider>
                     <NewsProvider>
-                        <Router>
+                        <Router> {/* HashRouter добавлен */}
                             <div className="app">
                                 <Header />
 
