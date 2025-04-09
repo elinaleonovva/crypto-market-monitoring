@@ -5,6 +5,14 @@ body {
     background-color: var(--bg-light);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
+    overflow-y: scroll; /* Фиксирует ширину контента */
+    scrollbar-width: thin; /* Firefox */
+    -ms-overflow-style: none; /* IE и Edge */
+    scrollbar-color: #c1c1c1 #f5f5f5; /* Firefox - цвет ползунка и трека */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Opera */
 }
 
 /* Общие стили для карточек */
