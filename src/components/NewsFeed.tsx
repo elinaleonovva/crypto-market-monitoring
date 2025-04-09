@@ -19,10 +19,20 @@ const NewsFeed = ({ news, loading, error }: NewsFeedProps) => {
         }
     };
 
-    // Функция для обработки ошибок загрузки изображений
     const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
         const target = e.target as HTMLImageElement;
         target.style.display = 'none'; // Скрыть битое изображение
+    };
+
+    // Функция для форматирования текста с учетом требований
+    const formatText = (text: string) => {
+        if (text.length > 700) {
+            return `${text.slice(0, 700).trim()}...`;
+        }
+        if (text.length > 0 && !/[.!?]$/.test(text)) {
+            return `${text}.`;
+        }
+        return text;
     };
 
     if (loading) return <Loader />;
@@ -72,7 +82,9 @@ const NewsFeed = ({ news, loading, error }: NewsFeedProps) => {
                             <h2>{selectedNews.title}</h2>
                             <div className="popup-text">
                                 {selectedNews.body.split('\n').map((text, i) => (
-                                    <p key={i}>{text}</p>
+                                    <p key={i}>
+                                        {formatText(text)}
+                                    </p>
                                 ))}
                             </div>
                             <a
