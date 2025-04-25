@@ -1,7 +1,7 @@
 // CurrencyConverterComponent.test.tsx
 import * as React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import CurrencyConverter from '../CurrencyConverter';
+import CurrencyConverter from './CurrencyConverter';
 
 const mockProps = {
     amount: '100',

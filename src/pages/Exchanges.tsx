@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ExchangesList from '../components/ExchangesList';
+import ExchangesList from '../components/ExchangesList/ExchangesList';
 
 const Exchanges = () => {
     const [sortBy, setSortBy] = useState<'volume' | 'rating'>('volume');

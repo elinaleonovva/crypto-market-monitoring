@@ -1,5 +1,5 @@
 import { useNews } from '../context/NewsContext';
-import NewsFeed from '../components/NewsFeed';
+import NewsFeed from '../components/NewsFeed/NewsFeed';
 
 const News = () => {
     const { news, loading, error } = useNews();

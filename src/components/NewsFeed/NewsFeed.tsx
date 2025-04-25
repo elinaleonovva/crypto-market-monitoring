@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { NewsItem } from '../services/newsService';
-import Loader from './Loader';
-import ErrorMessage from './ErrorMessage';
-import '../styles/components/news-feed.css';
+import { NewsItem } from '../../services/newsService';
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import './news-feed.css';
 
 interface NewsFeedProps {
     news: NewsItem[];
@@ -39,59 +39,57 @@ const NewsFeed = ({ news, loading, error }: NewsFeedProps) => {
     if (error) return <ErrorMessage message={error} />;
 
     return (
-        <div className="news-container">
-            <div className="news-grid">
+        <div className="news">
+            <div className="news__grid">
                 {news.map((item) => (
                     <article
                         key={item.id}
-                        className="news-card"
+                        className="news__card"
                         onClick={() => setSelectedNews(item)}
                     >
-                        <div className="image-wrapper">
+                        <div className="news__image-wrapper">
                             <img
-                                src={item.imageurl || '/placeholder.jpg'} // Добавлен fallback
+                                src={item.imageurl || '/placeholder.jpg'}
                                 alt={item.title}
-                                className="news-image"
-                                loading="lazy" // Ленивая загрузка
-                                decoding="async" // Улучшение производительности рендеринга
+                                className="news__image"
+                                loading="lazy"
+                                decoding="async"
                                 onError={handleImageError}
                             />
                         </div>
-                        <h3 className="news-title">{item.title}</h3>
+                        <h3 className="news__title">{item.title}</h3>
                     </article>
                 ))}
             </div>
 
             {selectedNews && (
-                <div className="popup-overlay" onClick={handleClosePopup}>
-                    <div className="popup-content">
+                <div className="news__popup" onClick={handleClosePopup}>
+                    <div className="news__popup-content">
                         <button
-                            className="close-btn"
+                            className="news__popup-close"
                             onClick={() => setSelectedNews(null)}
                         >
                             &times;
                         </button>
-                        <div className="image-container">
+                        <div className="news__popup-image-wrapper">
                             <img
-                                src={selectedNews.imageurl?.replace('_small', '_large') || '/placeholder-large.jpg'} // Пример увеличения разрешения
+                                src={selectedNews.imageurl?.replace('_small', '_large') || '/placeholder-large.jpg'}
                                 alt={selectedNews.title}
-                                className="popup-image"
+                                className="news__popup-image"
                             />
                         </div>
-                        <div className="popup-body">
+                        <div className="news__popup-body">
                             <h2>{selectedNews.title}</h2>
-                            <div className="popup-text">
+                            <div className="news__popup-text">
                                 {selectedNews.body.split('\n').map((text, i) => (
-                                    <p key={i}>
-                                        {formatText(text)}
-                                    </p>
+                                    <p key={i}>{formatText(text)}</p>
                                 ))}
                             </div>
                             <a
                                 href={selectedNews.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="read-more"
+                                className="news__read-more"
                             >
                                 Читать далее
                             </a>
@@ -101,6 +99,7 @@ const NewsFeed = ({ news, loading, error }: NewsFeedProps) => {
             )}
         </div>
     );
+
 };
 
 export default NewsFeed;

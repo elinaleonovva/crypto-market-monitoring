@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './currency-converter.css';
 
 interface CurrencyConverterProps {
     amount: string;
@@ -12,7 +13,6 @@ interface CurrencyConverterProps {
     onSwitchCurrencies: () => void;
 }
 
-// Мемоизация списка валют и форматирования
 const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
                                                                  amount,
                                                                  from,
@@ -26,7 +26,6 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
                                                              }) => {
     const [isValid, setIsValid] = React.useState(true);
 
-    // Мемоизация обработчика ввода
     const handleAmountChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         const isValidInput = /^(\d+)?([.]?\d{0,8})?$/.test(value);
@@ -40,7 +39,6 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
         }
     }, [onAmountChange]);
 
-    // Мемоизация форматированного значения
     const formattedAmount = React.useMemo(() => {
         if (amount === '' || amount === '.') return amount;
         if (amount.endsWith('.')) return amount;
@@ -51,7 +49,6 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
             : numberValue.toFixed(6).replace(/0+$/, '').replace(/\.$/, '');
     }, [amount]);
 
-    // Мемоизация элементов списка валют
     const CurrencyOption = React.memo(({ currency }: { currency: typeof currencies[0] }) => (
         <option value={currency.id}>
             {currency.name} ({currency.symbol})
@@ -59,31 +56,31 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
     ));
 
     return (
-        <div className="converter-container">
-            <div className="converter-inputs">
-                <div className="input-group">
-                    <label>Сумма:</label>
+        <div className="converter">
+            <div className="converter__inputs">
+                <div className="converter__input-group">
+                    <label className="converter__label">Сумма:</label>
                     <input
                         type="text"
                         value={formattedAmount}
                         onChange={handleAmountChange}
                         placeholder="Введите сумму"
-                        className={`amount-input ${!isValid ? 'invalid' : ''}`}
+                        className={`converter__amount-input ${!isValid ? 'converter__amount-input--invalid' : ''}`}
                     />
                     {!isValid && (
-                        <div className="validation-error">
+                        <div className="converter__validation-error">
                             Введите цифры (допустимый разделитель — точка)
                         </div>
                     )}
                 </div>
 
-                <div className="currency-selectors">
-                    <div className="selector-group">
-                        <label>Из:</label>
+                <div className="converter__selectors">
+                    <div className="converter__selector">
+                        <label className="converter__label">Из:</label>
                         <select
                             value={from}
                             onChange={(e) => onFromChange(e.target.value)}
-                            className="currency-select"
+                            className="converter__select"
                         >
                             {currencies.map(currency => (
                                 <CurrencyOption key={currency.id} currency={currency} />
@@ -92,19 +89,19 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
                     </div>
 
                     <button
-                        className="switch-button"
+                        className="converter__switch-button"
                         onClick={onSwitchCurrencies}
                         type="button"
                     >
                         ↔
                     </button>
 
-                    <div className="selector-group">
-                        <label>В:</label>
+                    <div className="converter__selector">
+                        <label className="converter__label">В:</label>
                         <select
                             value={to}
                             onChange={(e) => onToChange(e.target.value)}
-                            className="currency-select"
+                            className="converter__select"
                         >
                             {currencies.map(currency => (
                                 <CurrencyOption key={currency.id} currency={currency} />
@@ -115,11 +112,11 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
             </div>
 
             {result !== null && (
-                <div className="conversion-result">
-                    {parseFloat(amount).toLocaleString()} {currencies.find(c => c.id === from)?.symbol} = {' '}
+                <div className="converter__result">
+                    {parseFloat(amount).toLocaleString()} {currencies.find(c => c.id === from)?.symbol} ={' '}
                     {result.toLocaleString(undefined, {
                         maximumFractionDigits: 6,
-                        minimumFractionDigits: 0
+                        minimumFractionDigits: 0,
                     })} {currencies.find(c => c.id === to)?.symbol}
                 </div>
             )}
@@ -127,4 +124,4 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
     );
 };
 
-export default React.memo(CurrencyConverter); // Мемоизация всего компонента
+export default React.memo(CurrencyConverter);

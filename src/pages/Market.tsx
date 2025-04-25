@@ -1,7 +1,7 @@
 import { useCrypto } from '../context/CryptoContext';
-import MarketInfo from '../components/MarketInfo';
-import Loader from '../components/Loader';
-import ErrorMessage from '../components/ErrorMessage';
+import MarketInfo from '../components/MarketInfo/MarketInfo';
+import Loader from '../components/Loader/Loader';
+import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 
 const Market = () => {
     const {loading, error } = useCrypto();

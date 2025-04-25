@@ -1,5 +1,5 @@
 import { useCurrencyConverter } from '../hooks/useCurrencyConverter';
-import CurrencyConverter from '../components/CurrencyConverter';
+import CurrencyConverter from '../components/CurrencyConverter/CurrencyConverter';
 
 const ConverterPage = () => {
     const converter = useCurrencyConverter();

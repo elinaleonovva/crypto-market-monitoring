@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Loader from './Loader';
-import ErrorMessage from './ErrorMessage';
-import { fetchExchanges } from '../services/exchangesService';
-import '../styles';
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { fetchExchanges } from '../../services/exchangesService';
+import '../../styles';
 
 interface Exchange {
     id: string;
@@ -44,37 +44,37 @@ const ExchangesList = ({ sortBy }: ExchangesListProps) => {
         return a.trust_score_rank - b.trust_score_rank;
     });
 
-    if (loading) return <Loader />;
-    if (error) return <ErrorMessage message={error} />;
+    if (loading) return <Loader/>;
+    if (error) return <ErrorMessage message={error}/>;
 
     return (
-        <div className="exchanges-container">
-            <div className="table-header">
-                <div className="header-cell">Рейтинг</div>
-                <div className="header-cell">Название</div>
-                <div className="header-cell">Объем торгов (24h BTC)</div>
+        <div className="exchanges">
+            <div className="exchanges__header">
+                <div className="exchanges__cell">Рейтинг</div>
+                <div className="exchanges__cell">Название</div>
+                <div className="exchanges__cell">Объем торгов (24h BTC)</div>
             </div>
 
-            <div className="exchanges-list">
+            <div className="exchanges__list">
                 {sortedExchanges.map((exchange) => (
                     <a
                         key={exchange.id}
                         href={exchange.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="exchange-item"
+                        className="exchanges__item"
                     >
-                        <div className="exchange-rank">{exchange.trust_score_rank}</div>
-                        <div className="exchange-info">
+                        <div className="exchanges__rank">{exchange.trust_score_rank}</div>
+                        <div className="exchanges__info">
                             <img
                                 src={exchange.image}
                                 alt={exchange.name}
-                                className="exchange-logo"
-                                loading="lazy" // Ленивая загрузка
+                                className="exchanges__logo"
+                                loading="lazy"
                             />
-                            <span className="exchange-name">{exchange.name}</span>
+                            <span className="exchanges__name">{exchange.name}</span>
                         </div>
-                        <div className="exchange-volume">
+                        <div className="exchanges__volume">
                             {exchange.trade_volume_24h_btc.toFixed(2)}
                         </div>
                     </a>

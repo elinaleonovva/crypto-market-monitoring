@@ -1,19 +1,18 @@
-/* styles/market-info.css */
-.market-section {
+.market-info {
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
 }
 
-.market-grid {
+.market-info__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
     padding: 0 1rem;
 }
 
-.crypto-card {
+.market-info__card {
     background: linear-gradient(135deg, rgba(13, 25, 54, 1), rgba(30, 45, 75, 0.75));
     border-radius: 12px;
     padding: 1.5rem;
@@ -29,16 +28,16 @@
     justify-content: space-between;
 }
 
-.crypto-card:hover {
+.market-info__card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-[data-theme="dark"] .crypto-card {
+[data-theme="dark"] .market-info__card {
     background: linear-gradient(135deg, rgba(5, 12, 30, 0.9), rgba(15, 25, 45, 0.5));
 }
 
-.crypto-header {
+.market-info__header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -46,7 +45,7 @@
     gap: 0.5rem;
 }
 
-.crypto-symbol {
+.market-info__symbol {
     font-family: 'Space Mono', monospace;
     font-size: 1.4rem;
     color: #4a90e2;
@@ -54,14 +53,14 @@
     line-height: 1.2;
 }
 
-.crypto-name {
+.market-info__name {
     font-size: 1rem;
     color: rgba(255,255,255,0.8);
     text-align: right;
     line-height: 1.3;
 }
 
-.crypto-price {
+.market-info__price {
     font-family: 'Space Mono', monospace;
     font-size: 1.6rem;
     color: #fff;
@@ -71,76 +70,76 @@
 
 /* Адаптация для планшетов */
 @media (max-width: 768px) {
-    .market-section {
+    .market-info {
         padding: 1.5rem;
     }
 
-    .market-grid {
+    .market-info__grid {
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         gap: 1.2rem;
     }
 
-    .crypto-card {
+    .market-info__card {
         padding: 1.2rem;
         min-height: 110px;
     }
 
-    .crypto-symbol {
+    .market-info__symbol {
         font-size: 1.3rem;
     }
 
-    .crypto-price {
+    .market-info__price {
         font-size: 1.5rem;
     }
 }
 
 /* Адаптация для мобильных */
 @media (max-width: 480px) {
-    .market-section {
+    .market-info {
         padding: 1rem;
     }
 
-    .market-grid {
+    .market-info__grid {
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 0;
     }
 
-    .crypto-card {
+    .market-info__card {
         margin: 0;
         padding: 1rem;
         min-height: auto;
         border-radius: 10px;
     }
 
-    .crypto-header {
+    .market-info__header {
         margin-bottom: 0.8rem;
     }
 
-    .crypto-symbol {
+    .market-info__symbol {
         font-size: 1.2rem;
     }
 
-    .crypto-name {
+    .market-info__name {
         font-size: 0.9rem;
     }
 
-    .crypto-price {
+    .market-info__price {
         font-size: 1.3rem;
     }
 }
 
 /* Адаптация для маленьких экранов */
 @media (max-width: 360px) {
-    .crypto-symbol {
+    .market-info__symbol {
         font-size: 1.1rem;
     }
 
-    .crypto-price {
+    .market-info__price {
         font-size: 1.2rem;
     }
 
-    .crypto-name {
+    .market-info__name {
         font-size: 0.85rem;
     }
 }

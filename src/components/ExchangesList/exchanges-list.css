@@ -1,15 +1,4 @@
-@import '../variables.css';
-
-.exchanges-page .subtitle {
-    font-size: 1.7rem;
-    text-align: center;
-    color: var(--text-primary);
-    font-weight: 600;
-    margin-bottom: 2rem;
-}
-
-/* Контейнер таблицы */
-.exchanges-container {
+.exchanges {
     background: var(--card-bg);
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -17,8 +6,7 @@
     margin-top: 20px;
 }
 
-/* Шапка таблицы */
-.table-header {
+.exchanges__header {
     display: grid;
     grid-template-columns: 1fr 3fr 2fr;
     padding: 1rem 2rem;
@@ -27,15 +15,17 @@
     color: white;
 }
 
-/* Список бирж */
-.exchanges-list {
+.exchanges__cell {
+    font-weight: inherit;
+}
+
+.exchanges__list {
     display: grid;
     gap: 1px;
     background: var(--border-color);
 }
 
-/* Элемент биржи */
-.exchange-item {
+.exchanges__item {
     display: grid;
     grid-template-columns: 1fr 3fr 2fr;
     align-items: center;
@@ -46,40 +36,39 @@
     transition: background 0.2s ease;
 }
 
-.exchange-item:hover {
+.exchanges__item:hover {
     background: var(--bg-hover);
 }
 
-/* Колонки */
-.exchange-rank {
+.exchanges__rank {
     font-weight: 500;
     color: var(--primary-color);
 }
 
-.exchange-info {
+.exchanges__info {
     display: flex;
     align-items: center;
     gap: 1.5rem;
 }
 
-.exchange-logo {
+.exchanges__logo {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.exchange-name {
+.exchanges__name {
     font-weight: 500;
     color: var(--text-color);
 }
 
-.exchange-volume {
+.exchanges__volume {
     font-weight: 500;
     color: var(--success-color);
 }
 
-/* Кнопки фильтров */
+/* фильтры */
 .filters {
     display: flex;
     gap: 1rem;
@@ -87,7 +76,7 @@
     justify-content: center;
 }
 
-.filters button {
+.filters__button {
     padding: 0.8rem 2rem;
     border: none;
     border-radius: var(--border-radius);
@@ -97,65 +86,55 @@
     transition: all 0.3s ease;
 }
 
-.filters button.active {
+.filters__button--active {
     background: var(--primary-color);
     color: white;
 }
 
-.filters button:hover {
+.filters__button:hover {
     transform: translateY(-2px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Темная тема */
-[data-theme="dark"] {
-    .filters button {
-        color: var(--text-color-dark);
-        background: var(--bg-dark);
-    }
+/* Тёмная тема */
+[data-theme="dark"] .filters__button {
+    color: var(--text-color-dark);
+    background: var(--bg-dark);
+}
 
-    .filters button.active {
-        background: var(--primary-light);
-    }
+[data-theme="dark"] .filters__button--active {
+    background: var(--primary-light);
+}
 
-    .subtitle {
-        color: var(--text-primary);
-    }
-
-    .exchange-item:hover {
-        background: var(--bg-dark-hover);
-    }
+[data-theme="dark"] .exchanges__item:hover {
+    background: var(--bg-dark-hover);
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
-    .table-header {
+    .exchanges__header {
         display: none;
     }
 
-    .exchange-item {
+    .exchanges__item {
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 1.5rem;
     }
 
-    .exchange-info {
+    .exchanges__info {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
     }
 
-    .exchange-volume {
+    .exchanges__volume {
         border-top: 1px solid var(--border-color);
         padding-top: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .exchanges-page h1 {
-        font-size: 2rem;
-    }
-
     .subtitle {
         font-size: 1.3rem;
     }
@@ -164,7 +143,7 @@
         flex-direction: column;
     }
 
-    .filters button {
+    .filters__button {
         width: 100%;
     }
 }

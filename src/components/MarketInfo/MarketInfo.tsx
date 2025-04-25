@@ -1,9 +1,9 @@
 // components/MarketInfo.tsx
 import { useEffect, useState } from 'react';
-import Loader from './Loader';
-import ErrorMessage from './ErrorMessage';
-import { fetchMarketData } from '../services/marketService';
-import '../styles/components/market-info.css';
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { fetchMarketData } from '../../services/marketService';
+import './market-info.css';
 
 interface CryptoData {
     id: string;
@@ -35,15 +35,15 @@ const MarketInfo = () => {
     if (error) return <ErrorMessage message={error} />;
 
     return (
-        <section className="market-section">
-            <div className="market-grid">
+        <section className="market-info">
+            <div className="market-info__grid">
                 {cryptoData.map((crypto) => (
-                    <div key={crypto.id} className="crypto-card">
-                        <div className="crypto-header">
-                            <span className="crypto-symbol">{crypto.symbol.toUpperCase()}</span>
-                            <span className="crypto-name">{crypto.name}</span>
+                    <div key={crypto.id} className="market-info__card">
+                        <div className="market-info__header">
+                            <span className="market-info__symbol">{crypto.symbol.toUpperCase()}</span>
+                            <span className="market-info__name">{crypto.name}</span>
                         </div>
-                        <div className="crypto-price">
+                        <div className="market-info__price">
                             ${crypto.current_price.toLocaleString()}
                         </div>
                     </div>

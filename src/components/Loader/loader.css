@@ -1,12 +1,12 @@
-@import '../variables.css';
+@import '../../styles/variables.css';
 
-.loader-container {
+.loader {
     display: flex;
     justify-content: center;
     padding: 50px;
 }
 
-.loader {
+.loader__spinner {
     border: 4px solid var(--bg-light);
     border-top: 4px solid var(--primary-color);
     border-radius: 50%;
