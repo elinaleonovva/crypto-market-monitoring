@@ -11,13 +11,13 @@ const Exchanges = () => {
             <div className="filters">
                 <button
                     onClick={() => setSortBy('volume')}
-                    className={sortBy === 'volume' ? 'active' : ''}
+                    className={`filters__button ${sortBy === 'volume' ? 'filters__button--active' : ''}`}
                 >
                     По объему
                 </button>
                 <button
                     onClick={() => setSortBy('rating')}
-                    className={sortBy === 'rating' ? 'active' : ''}
+                    className={`filters__button ${sortBy === 'rating' ? 'filters__button--active' : ''}`}
                 >
                     По рейтингу
                 </button>

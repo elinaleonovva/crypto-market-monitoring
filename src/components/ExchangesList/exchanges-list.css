@@ -110,6 +110,11 @@
     background: var(--bg-dark-hover);
 }
 
+.subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
     .exchanges__header {

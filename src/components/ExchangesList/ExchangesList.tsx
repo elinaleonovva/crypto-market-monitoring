@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { fetchExchanges } from '../../services/exchangesService';
-import '../../styles';
+import './exchanges-list.css';
 
 interface Exchange {
     id: string;
